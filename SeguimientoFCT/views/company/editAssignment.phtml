@@ -1,0 +1,26 @@
+<div class="edit-assignment">
+    <h2>Editar Asignación</h2>
+    <form method="post" action="index.php">
+        <input type="hidden" name="controller" value="company">
+        <input type="hidden" name="action" value="updateAssignment">
+        <input type="hidden" name="id_student" value="<?= $assignment['id_student'] ?>">
+        <input type="hidden" name="tutor_name" value="<?= $assignment['company_tutor_name'] ?>">
+
+        <label for="new_student">Alumno:</label>
+        <select id="new_student" name="new_student" required>
+            <?php foreach ($unassignedStudents as $student): ?>
+                <option value="<?= $student->getId() ?>" <?= $student->getId() === $assignment['id_student'] ? 'selected' : '' ?>>
+                    <?= $student->getUsername() ?> (<?= $student->getEmail() ?>)
+                </option>
+            <?php endforeach; ?>
+        </select>
+
+        <label for="start_date">Fecha de Inicio:</label>
+        <input type="date" id="start_date" name="start_date" value="<?= $assignment['start_date'] ?>" required>
+
+        <label for="end_date">Fecha de Fin:</label>
+        <input type="date" id="end_date" name="end_date" value="<?= $assignment['end_date'] ?>" required>
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</div>

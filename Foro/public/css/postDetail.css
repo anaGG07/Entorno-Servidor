@@ -1,0 +1,187 @@
+/* Contenedor principal */
+#forum-container {
+  width: 80%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #0288d1;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Pregunta principal */
+.post-question {
+  background-color: #252540;
+  border: 2px solid #0056b3;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.question-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #dbdbdb;
+  margin-bottom: 15px;
+}
+
+.question-text {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  color: #dbdbdb;
+}
+
+.response-form {
+  margin-top: 15px;
+  text-align: right;
+}
+
+/* Sección de respuestas */
+#answers-section {
+  background-color: #2f2f4d;
+ color: #dbdbdb;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.answers-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #dbdbdb;
+  margin-bottom: 15px;
+}
+
+/* Lista de respuestas */
+.answers-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.answers-list li {
+  
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.answers-list li .answer-text {
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: #333;
+}
+
+.answers-list li .answer-meta {
+  font-size: 0.85em;
+  color: #666;
+  text-align: right;
+}
+
+/* Botón Volver */
+.back-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-button {
+  background-color: #0056b3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.back-button:hover {
+  background-color: #003d80;
+}
+
+/* Mensajes de error */
+.error-message,
+.no-answers {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.btn-response {
+  background-color: #b30095;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+}
+
+/* User Info */
+
+.form-usr-info {
+    height: 50px;    
+    border-bottom: solid;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 10px; 
+    box-sizing: border-box;
+  }
+  .form-usr-info form{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .form-usr-info form  button {
+   
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    flex-wrap: nowrap;
+    
+
+  }
+  
+  
+  .form-usr-info form  button img {
+    border-radius: 100%;
+    width: 40px;    
+    margin-right: 10px;
+  }
+  
+  
+  .time {
+    color: white;
+    margin-left: auto; 
+    text-align: right;
+    font-size: 14px;
+  }
+  
+  
+  .form-usr-info form  button:hover {
+    background-color: #003d80;
+  }
+
+  .form-usr-info form  button span{
+    display: flex;
+    width: 100%;
+    
+  }
+  

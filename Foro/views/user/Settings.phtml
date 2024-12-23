@@ -1,0 +1,29 @@
+
+<div>
+
+    <h2>Panel de administrador</h2>
+    <p>Administra los post y los usuarios desde aquí</p>
+    <form method='post' action='index.php'>
+        <!-- Panel de administrador -->
+
+        <p>
+            <input type='hidden' name='controller' value='crud'>
+            <input type='hidden' name='value' value='posts'>
+            <button type='submit' style='background:none; border:none; cursor:pointer;'>
+                Configuración del foro
+            </button>
+        </p>
+
+    </form>
+    <form method='post' action='index.php'>
+        <p>
+            <input type='hidden' name='controller' value='crud'>
+            <input type='hidden' name='value' value='users'>
+            <button type='submit' style='background:none; border:none; cursor:pointer;'>
+                Gestionar usuarios
+            </button>
+        </p>
+
+    </form>
+
+</div>

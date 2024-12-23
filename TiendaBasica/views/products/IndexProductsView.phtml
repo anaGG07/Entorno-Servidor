@@ -1,0 +1,81 @@
+<h1>Inventario de productos</h1>
+
+<br><br>
+
+<div style="max-height: 600px; overflow-y: auto; border: 1px solid #ddd;">
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Nombre</th>
+        <th>Imagen</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Creado por</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <?php
+      for ($i = 0; $i < count($products); $i++) {
+        $product = $products[$i];
+        $imagePath = 'public/img/' . $product->getImg();
+      ?>
+        <tr>
+          <td>
+            <form method="post" action="index.php">
+              <input type="hidden" name="controller" value="crudProducts">
+              <input type="hidden" name="id" value="<?php echo $product->getId() ?>">
+              <button type="submit" name="crudP" value="update">Modificar</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="index.php">
+              <input type="hidden" name="controller" value="crudProducts">
+              <input type="hidden" name="id" value="<?php echo $product->getId() ?>">
+              <button type="submit" name="crudP" value="delete">Borrar</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="index.php">
+              <input type="hidden" name="controller" value="crudProducts">
+              <input type="hidden" name="id" value="<?php echo $product->getId() ?>">
+              <button type="submit" name="crudP" value="read">Inspeccionar</button>
+            </form>
+          </td>
+
+          <td><?php echo $product->getName(); ?></td>
+          <td>
+            <?php
+            if (file_exists($imagePath) && $product->getImg()) {
+            ?>
+              <img src="<?php echo $imagePath; ?>" style="width: 100px; height: auto;">
+            <?php
+            } else {
+            ?>
+              <img src="https://picsum.photos/200" style="width: 100px; height: auto;" alt="Imagen aleatoria">
+            <?php
+            }
+            ?>
+          </td>
+          <td><?php echo $product->getDescription(); ?></td>
+          <td><?php echo $product->getPrice(); ?></td>
+          <td><?php echo $product->getStock(); ?></td>
+          <td><?php echo $product->getUsername(); ?></td>
+        </tr>
+      <?php
+      }
+      ?>
+    </tbody>
+  </table>
+</div>
+
+<br><br>
+<form method="post" action="index.php">
+  <input type="hidden" name="controller" value="crudProducts">
+  <button type="submit" name="crudP" value="create">Crear Producto</button>
+</form>
+<button type="button" onclick="window.location.href='index.php';">Volver</button>

@@ -1,0 +1,33 @@
+<?php
+  function showUserInfo($user, $timestamp, $isAdmin){
+      return "<form action='index.php' method='post'>
+                  
+                  <input type='hidden' name='controller' value='user'>
+                  <input type='hidden' name='admin' value='" . $isAdmin . "'>
+                  <input type='hidden' name='id' value='" . $user->getId() . "'>
+
+                  <button type='submit' style='background:none; border:none; cursor:pointer;'>
+                      <img style='border-radius:100%' src='" . $user->getAvatar() . "' alt='Icono' width='30' height='30'> " . $user->getUsername() . "
+                  </button>
+                  (" . $timestamp . ")
+
+                </form>";
+  }
+
+  function userDetail($user){
+    return "<form action='index.php' method='post'>
+              <input type='hidden' name='controller' value='user'>
+              <input type='hidden' name='id' value='" . $user->getId() . "'>
+            
+              <button type='submit' style='background:none; border:none; cursor:pointer;'>
+                  <img style='border-radius:100%' src='" . $user->getAvatar() . "' alt='Icono' width='30' height='30'>
+              </button>
+            </form>";
+  }
+
+
+
+?>
+
+
+  

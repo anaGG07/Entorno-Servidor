@@ -1,0 +1,62 @@
+/* Contenedor principal */
+body {
+    background-color: #1a1a1a;
+    color: #ffffff; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Título de la playlist */
+strong {
+    font-size: 24px;
+    color: white; 
+}
+
+/* Lista de canciones */
+ul {
+    list-style-type: none; 
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #262626; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
+}
+
+ul li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ff3333; 
+    font-size: 18px;
+    color: #ffffff; 
+    text-align: left;
+}
+
+ul li:last-child {
+    border-bottom: none; 
+}
+
+/* Información adicional */
+p {
+    margin: 15px 0;
+    font-size: 18px;
+    color: white; 
+}
+
+/* Botón "Volver" */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff; 
+    background-color: #cc0000; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #990000; 
+}

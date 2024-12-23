@@ -1,0 +1,18 @@
+<h2> <?php echo $user->getUsername(); ?></h2>
+<img src="<?php echo $user->getAvatar(); ?>" alt="Avatar" style="border-radius: 50%; width: 100px; height: 100px;">
+<p>Biografía: <?php echo $user->getBio() ?: 'Sin contenido'; ?></p>
+<?php
+if ($user_session->isAdmin()) {
+
+?>
+    <form method="post" action="index.php">
+        <input type='hidden' name='controller' value='user'>
+        <input type='hidden' name='action' value='banear'>
+        <input type='hidden' name='id' value=' <?php echo $user->getId(); ?>'>
+        <button type='submit'>Banear</button>
+    </form>
+<?php
+}
+$posts = PostRepository::getQuestionsByUserId($user->getId());
+require_once('views\user\QuestionsHistory.phtml');
+?>

@@ -1,0 +1,46 @@
+<?php
+require_once 'models/theme/ThemeRepository.php';
+$themes = ThemeRepository::getAllThemes(); // Obtener todos los temas
+?>
+
+<div id="add-question-form">
+    <h2>Añadir Pregunta al Foro</h2>
+    <form action="index.php" method="POST" enctype="multipart/form-data">
+
+        <label for="id_theme">Tema:</label>
+        <select name="id_theme" id="id_theme" required>
+            <option value="">Selecciona un tema</option>
+            <?php foreach ($themes as $theme): ?>
+                <option value="<?php echo $theme->getId(); ?>">
+                    <?php echo $theme->getTitle(); ?>
+                </option>
+            <?php endforeach; ?>
+        </select><br><br>
+
+        
+        <label for="title">Título:</label>
+        <input type="text" name="title" id="title" placeholder="Escribe un título" required><br><br>
+
+        
+        <label for="text">Descripción:</label>
+        <textarea name="text" id="text" rows="5" cols="50" placeholder="Escribe tu pregunta o descripción" required></textarea><br><br>
+
+        
+        <label for="image">Imagen (opcional):</label>
+        <input type="file" name="image" id="image" accept="image/*"><br><br>
+
+        
+        <label for="scope">Ámbito:</label>
+        <select name="scope" id="scope" required>
+            <option value="0">Público</option>
+            <option value="1">Privado</option>
+        </select><br><br>
+
+        <input type='hidden' name='controller' value='post'>
+        <button type="submit" name="action" value="add">Añadir Pregunta</button>
+
+        <button type='button' onclick="window.location.href='index.php'">Volver</button>
+        
+
+    </form>
+</div>

@@ -1,0 +1,48 @@
+<br>
+<div id="tableContainer">
+<table id="table">
+    <thead>
+        <tr>
+            <th></th>
+            <?php
+              foreach ($headers as $header) {
+                echo "<th>$header</th>";
+              }
+            ?>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <?php
+              foreach ($rows as $row) {
+  
+                echo "<tr>
+                <td>
+
+                  <form method='post' action='index.php'>
+                  <input type='hidden' name='controller' value='". strtolower($class) ."'>
+                  <input type='hidden' name='id' value='". $row['id'] ."'>
+                  <input type='hidden' name='action' value='delete'>
+                  <button>x</button>
+                  </form>
+
+                  <form method='post' action='index.php'>
+                  <input type='hidden' name='controller' value='". strtolower($class) ."'>
+                  <input type='hidden' name='id' value='". $row['id']  ."'>
+                  <input type='hidden' name='action' value='edit'>
+                  <button>edit</button>
+                  </form>
+
+                </td>";
+                foreach ($columns as $column) {
+                    echo "<td>$row[$column]</td>";
+                
+                }
+                echo "</tr>";
+              }
+            ?>
+          
+        </tr>
+    </tbody>
+</table>
+</div>

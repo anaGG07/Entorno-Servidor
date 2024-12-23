@@ -1,0 +1,99 @@
+/* listSongs.css */
+
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Lista de resultados */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #262626;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+ul li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ff3333;
+    font-size: 18px;
+    text-align: left;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+ul li label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+ul li input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Selector de playlists */
+#playlist-select {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #cc0000;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+#playlist-select option {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* Botones */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #cc0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #990000;
+}
+
+button[type="button"] {
+    background-color: #4d4d4d;
+}
+
+button[type="button"]:hover {
+    background-color: #333333;
+}
+
+/* Mensajes de información */
+p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ffffff;
+}

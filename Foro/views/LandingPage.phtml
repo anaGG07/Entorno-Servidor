@@ -1,0 +1,78 @@
+<?php
+require_once('./models/post/PostRepository.php');
+require_once('./models/theme/ThemeRepository.php');
+?>
+
+<div class="divPosts">
+    <table id="table-LandingPage">
+        <thead>
+            <th>
+                Tema
+            </th>
+            <th>
+                Última Pregunta
+            </th>
+        </thead>
+        <tbody>
+            <?php
+            // Obtener todos los temas
+            $allThemes = ThemeRepository::getAllThemes();
+            $displayedThemes = [];
+
+            foreach ($allThemes as $theme) {
+                // Obtener todas las publicaciones relacionadas con el tema
+                $posts = PostRepository::getQuestionsByTheme($theme->getId());
+
+                // Ordenar las publicaciones por fecha (asumiendo que hay un método getTimestamp())
+                usort($posts, function ($a, $b) {
+                    return strtotime($b->getTimestamp()) - strtotime($a->getTimestamp());
+                });
+
+                // Seleccionar el último post del tema
+                $lastPost = $posts[0] ?? null;
+
+                if ($lastPost && !in_array($theme->getId(), $displayedThemes)) {
+                    $displayedThemes[] = $theme->getId();
+
+                    echo "
+                    <tr>
+                        <td>
+                            <form action='index.php' method='post' class='frm-table'>
+                                <input type='hidden' name='controller' value='detail'>
+                                <input type='hidden' name='type' value='theme'>
+                                <input type='hidden' name='id' value='" . $theme->getId() . "'>
+                                <button type='submit' >
+                                    <img src='" . $theme->getIcon() . "'/> " . $theme->getTitle() . "
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action='index.php' method='post' class='frm-table'>
+                                <input type='hidden' name='controller' value='detail'>
+                                <input type='hidden' name='type' value='post'>
+                                <input type='hidden' name='id' value='" . $lastPost->getId() . "'>
+                                <button type='submit' >
+                                    " . $lastPost->getTitle() . "
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    ";
+                }
+            }
+            ?>
+        </tbody>
+    </table>
+
+<?php
+if (isset($_SESSION['user'])) {
+?>
+    <form method="post" action="index.php" class="addPost">
+        <input type='hidden' name='controller' value='formQuestion'>
+        <input type='hidden' name='value' value='add'>
+        <button>+</button>
+    </form>
+<?php
+}
+?>
+</div>

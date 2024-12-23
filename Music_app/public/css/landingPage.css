@@ -1,0 +1,47 @@
+/* LandingPage.css */
+
+/* Estilos específicos para el contenedor principal */
+#divLanding {
+    display: flex;
+    text-align: center;
+    padding: 50px;
+    background-color: #b30000; 
+    color: #ffffff; 
+}
+
+/* Estilos para el título */
+#titleLanding {
+    font-size: 36px;
+    font-weight: bold;
+    color: white; 
+}
+
+/* Estilos para el formulario en LandingPage */
+#divFormLanding {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    background-color: #262626; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
+    border-radius: 10px;
+    text-align: center;
+}
+
+#divFormLanding p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: white; 
+}
+
+/* Botones específicos para LandingPage */
+#formLanding button {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 18px;
+    background-color: #e60000; 
+}
+
+#formLanding button:hover {
+    background-color: #cc0000; 
+}

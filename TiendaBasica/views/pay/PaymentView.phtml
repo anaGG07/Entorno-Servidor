@@ -1,0 +1,19 @@
+<form method="post" action="index.php">
+    <input type="hidden" name="controller" value="pay">
+
+
+    <h3>Seleccione el método de pago:</h3>
+
+    <div>
+        
+        <input type="radio" id="card" name="payMethod" value="card" required>
+        <label for="tarjeta">Tarjeta de crédito/débito</label>
+    </div>
+
+    <div>
+        <input type="radio" id="transfer" name="payMethod" value="transfer">
+        <label for="transferencia">Transferencia bancaria</label>
+    </div>
+
+    <button type="submit" name="seleccionar_pago" class="editButton">Continuar</button>
+</form>

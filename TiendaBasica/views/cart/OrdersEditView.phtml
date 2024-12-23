@@ -1,0 +1,19 @@
+<form method="post" action="index.php">
+    <h2>Editar Estado del Pedido</h2>
+    
+    <input type="hidden" name="controller" value="crudOrders">
+    <input type="hidden" name="crudO" value="update">
+    <input type="hidden" name="id" value="<?php echo $order->getId(); ?>">
+    <input type="hidden" name="state" value="new_state">
+    
+    <label>Nuevo Estado:</label>
+    <select name="new_state">
+        <option value="<?php echo OrderRepository::CARRITO;     ?>" <?php echo $order->getState() ==  OrderRepository::CARRITO    ? 'selected' : ''; ?>>Carrito</option>
+        <option value="<?php echo OrderRepository::PAGADO;      ?>" <?php echo $order->getState() ==  OrderRepository::PAGADO     ? 'selected' : ''; ?>>Pagado</option>
+        <option value="<?php echo OrderRepository::PENDIENTE;   ?>" <?php echo $order->getState() ==  OrderRepository::PENDIENTE  ? 'selected' : ''; ?>>Pendiente</option>
+        <option value="<?php echo OrderRepository::ENVIADO;     ?>" <?php echo $order->getState() ==  OrderRepository::ENVIADO    ? 'selected' : ''; ?>>Enviado</option>
+    </select>
+    
+    <button type="submit">Guardar</button>
+</form>
+

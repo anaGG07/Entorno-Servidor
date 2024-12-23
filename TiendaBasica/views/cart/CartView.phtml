@@ -1,0 +1,39 @@
+<?php
+
+$total = 0;
+
+foreach ($orderLines as $line) {
+    $total += $line->getLinePrice(); 
+    echo "
+    <form method='post' action='index.php'>
+     $line
+    <input type='hidden' name='controller' value='cart'>
+    <input type='hidden' name='crudCart' value='createLine'>
+    <input type='hidden' name='productId' value='". $line->getIdProduct() ."'> 
+    <button type='submit' name='command' value='add' >+</button>
+    <button type='submit' name='command' value='less' >-</button>
+</form>
+    ";
+}
+
+echo "<br> <h2><strong> Total del pedido = " . $total . "€ </strong></h2>";
+
+?>
+<br><br>
+
+<form method="post" action="index.php">
+    <input type="hidden" name="controller" value="pay">
+    <input type="hidden" name="payMethod" value="choose">
+    <button type="submit" name="state" value="endShop">Finalizar compra</button>
+
+
+</form>
+
+<form method="post" action="index.php">
+    <input type="hidden" name="controller" value="cart">
+    <input type="hidden" name="crudCart" value="showOrders">
+    <button type="submit" name="state" value="orders">Mis pedidos</button>
+
+</form>
+
+<button type="button" onclick="window.location.href='index.php';">Volver</button>

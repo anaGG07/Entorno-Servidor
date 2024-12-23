@@ -1,0 +1,72 @@
+<?php
+
+//' ---- ESTABLECER CABECERAS ---- 
+
+$user = $user_session;
+if ($user->isAdmin() === "1") {
+  require_once('views/user/AdminHeaderIndexView.phtml');
+
+} else {
+  require_once('views/user/HeaderIndexView.phtml');
+}
+
+//' ---- CREAR VISTA LISTA DE CANCIONES ---- 
+
+
+$keyword = $_POST['keyword'];
+
+// Llamar al repositorio para buscar canciones
+$results = SongRepository::searchSongs($keyword);
+
+// Obtener las playlists del usuario activo
+$userId = $user_session->getId();
+$playlists = PlaylistRepository::getPlaylistsByUserId($userId);
+
+if (!empty($results)) {
+    echo "<h2>Resultados de la búsqueda</h2>";
+
+    // Comienza el formulario único
+    echo "<form method='post' action='index.php'>";
+    echo "<input type='hidden' name='controller' value='playlist'>";
+    echo "<input type='hidden' name='action' value='add_song'>";
+
+    echo "<ul>";
+    foreach ($results as $song) {
+        echo "<li>";
+        echo "<label>";
+        echo "<input type='radio' name='song_id' value='" . $song->getId() . "'>";
+        echo "<strong>" . $song->getTitle() . "</strong> - " . $song->getAuthor();
+        echo " (" . gmdate("i:s", $song->getDuration()) . ")";
+        echo "</label>";
+        echo "</li>";
+    }
+    echo "</ul>";
+
+    // Selector único de playlists
+    if (!empty($playlists)) {
+        echo "<div style='margin-top: 20px;'>";
+        echo "<label for='playlist-select'><strong>Selecciona una playlist:</strong></label>";
+        echo "<select id='playlist-select' name='playlist_id' required>";
+        foreach ($playlists as $playlist) {
+            echo "<option value='" . $playlist->getId() . "'>" . $playlist->getTitle() . "</option>";
+        }
+        echo "</select>";
+        echo "</div>";
+
+        // Botón para añadir la canción seleccionada a la playlist seleccionada
+        echo "<button type='submit' style='margin-top: 20px;'>Añadir Canción a la Playlist</button>";
+
+        
+    } else {
+        echo "<p>No tienes playlists creadas. Crea una nueva primero.</p>";
+    }
+
+    echo "</form>";
+} else {
+    echo "<p>No se encontraron canciones que coincidan con tu búsqueda.</p>";
+}
+?>
+
+<button type="button" onclick="window.location.href='index.php';">Volver</button>
+
+    

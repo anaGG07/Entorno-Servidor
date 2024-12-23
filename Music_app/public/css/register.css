@@ -1,0 +1,76 @@
+
+/* Estilo para el formulario principal */
+#formRegister {
+    margin: 50px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    background-color: #262626; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+/* Encabezado del formulario */
+#pRegister {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff; 
+    margin-bottom: 20px;
+}
+
+/* Campos de entrada */
+#formRegister input[type="text"],
+#formRegister input[type="email"],
+#formRegister input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 2px solid #cc0000; 
+    border-radius: 5px;
+    background-color: #1a1a1a; 
+    color: #ffffff; 
+}
+
+#formRegister input::placeholder {
+    color: #ffffff; 
+    opacity: 0.8;
+}
+
+/* Cambios al enfocar los campos */
+#formRegister input:focus {
+    outline: none;
+    border-color: #e60000; 
+}
+
+/* Botones del formulario */
+#formRegister button {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 16px;
+    color: #ffffff; /* Blanco */
+    background-color: #cc0000; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#formRegister button:hover {
+    background-color: #990000; 
+}
+
+/* Botón "Volver" */
+#formRegister button[type="button"] {
+    background-color: #4d4d4d; 
+}
+
+#formRegister button[type="button"]:hover {
+    background-color: #333333; 
+}
+
+/* Para mejorar la apariencia general del formulario */
+#formRegister div {
+    margin-top: 20px;
+}

@@ -1,0 +1,53 @@
+<div>
+    <h1>Historial</h1>
+    <div>
+        <table id="table-LandingPage">
+            <thead>
+                <th>
+                    Tema
+                </th>
+                <th>
+                    Preguntas
+                </th>
+            </thead>
+            <tbody>
+                <?php
+
+                
+                foreach ($posts as $post) {
+
+                    $theme = ThemeRepository::getThemeById($post->getIdTheme());
+
+                    echo "
+                       
+                        <tr>
+                            <td>
+                                <form action='index.php' method='post'>
+                                    <input type='hidden' name='controller' value='detail'>
+                                    <input type='hidden' name='type' value='theme'>
+                                    <input type='hidden' name='id' value='" . $theme->getId() . "'>
+                                    <button type='submit' style='background:none; border:none; cursor:pointer;'>
+                                        <img src='" . $theme->getIcon() . "'/> " . $theme->getTitle() . "
+                                    </button>
+                                </form>
+                            </td>
+                    
+                            <td>
+                                <form action='index.php' method='post'>
+                                    <input type='hidden' name='controller' value='detail'>
+                                    <input type='hidden' name='type' value='post'>
+                                    <input type='hidden' name='id' value='" . $post->getId() . "'>
+                                    <button type='submit' style='background:none; border:none; cursor:pointer;'>
+                                        " . $post->getTitle() . "
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    ";
+                }
+                ?>
+            </tbody>
+        </table>
+
+    </div>
+</div>

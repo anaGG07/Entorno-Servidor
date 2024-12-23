@@ -1,0 +1,25 @@
+<div id="content">
+    <h2>Editar Perfil</h2>
+    <form action="index.php" method="post" enctype="multipart/form-data">
+
+        <!-- Campo para cambiar el avatar -->
+        <label for="avatar">Avatar actual:</label><br>
+        <img src="./public/img/avatars/<?php echo $user->getAvatar(); ?>" alt="Avatar" style="border-radius: 50%; width: 100px; height: 100px; margin-bottom: 10px;"><br>
+        <label for="avatar">Subir nuevo avatar:</label><br>
+        <input type="file" name="avatar" id="avatar" accept="image/*"><br><br>
+
+        <!-- Campo para cambiar el email -->
+        <label for="email">Email:</label><br>
+        <input type="email" name="email" id="email" value="<?php echo $user->getEmail(); ?>" required><br><br>
+
+        <!-- Campo para cambiar la biografía -->
+        <label for="bio">Biografía:</label><br>
+        <textarea name="bio" id="bio" rows="4" cols="50"><?php echo $user->getBio(); ?></textarea><br><br>
+
+        <!-- Botón para enviar el formulario -->
+        <input type='hidden' name='controller' value='user'>
+        <input type='hidden' name='action' value='update'>
+        <input type='hidden' name='id' value='<?php echo $user->getId(); ?>'>
+        <button type="submit">Guardar cambios</button>
+    </form>
+</div>

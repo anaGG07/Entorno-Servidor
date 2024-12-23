@@ -1,0 +1,45 @@
+<div class="search-results">
+    <h2>Resultados de búsqueda para "<?php echo$query; ?>"</h2>
+
+    <h3>Empresas</h3>
+    <ul>
+        <?php foreach ($companies as $company): ?>
+            <li>
+                <form action="index.php" method="post">
+                    <input type="hidden" name="controller" value="company">
+                    <input type="hidden" name="action" value="showDetail">
+                    <input type="hidden" name="id" value="<?php echo $company->getId(); ?>">
+                    <button type="submit"><?php echo $company->getName(); ?></button>
+                </form>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+
+    <h3>Profesores</h3>
+    <ul>
+        <?php foreach ($teachers as $teacher): ?>
+            <li>
+                <form action="index.php" method="post">
+                    <input type="hidden" name="controller" value="user">
+                    <input type="hidden" name="action" value="showDetail">
+                    <input type="hidden" name="id" value="<?php echo $teacher->getId(); ?>">
+                    <button type="submit"><?php echo $teacher->getUsername(); ?></button>
+                </form>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+
+    <h3>Alumnos</h3>
+    <ul>
+        <?php foreach ($students as $student): ?>
+            <li>
+                <form action="index.php" method="post">
+                    <input type="hidden" name="controller" value="user">
+                    <input type="hidden" name="action" value="showDetail">
+                    <input type="hidden" name="id" value="<?php echo $student->getId(); ?>">
+                    <button type="submit"><?php echo $student->getUsername(); ?></button>
+                </form>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

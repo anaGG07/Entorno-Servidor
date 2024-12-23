@@ -1,0 +1,33 @@
+<?php
+require_once('./views/components/FormUserView.phtml');
+?>
+<div id="headerUserLanding">
+    <div id="userAvatarSection">
+        <?php
+        if (isset($_SESSION['user'])) {
+            echo userDetail($_SESSION['user']);
+        }
+        ?>
+    </div>
+
+    <div id="titleSection">
+        <a href="index.php">
+            <strong>Seguimiento FCT</strong>
+        </a>
+    </div>
+
+    <div id="buttonSection">
+        <?php
+        if (!isset($_SESSION['user'])) { ?>
+            <form method="post" action="index.php" id="formSession">
+                <button type="submit" name="controller" value="login" class="btn trapezoid-left">Inicia sesión</button>
+                <button type="submit" name="controller" value="register" class="btn trapezoid-right">Regístrate</button>
+            </form>
+        <?php
+        } else { ?>
+            <form method="post" action="index.php">
+                <button type="submit" name="controller" value="logout">Cerrar sesión</button>
+            </form>
+        <?php } ?>
+    </div>
+</div>

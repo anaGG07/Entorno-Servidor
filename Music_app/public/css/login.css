@@ -1,0 +1,84 @@
+
+/* Estilo para el formulario principal */
+#formLogin {
+    margin: 50px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    background-color: #262626; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
+    text-align: center;
+}
+
+/* Estilo para el texto del encabezado del formulario */
+#pLogin {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff; 
+    margin-bottom: 20px;
+}
+
+/* Estilos para los campos de entrada */
+#formLogin input[type="text"],
+#formLogin input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 2px solid #cc0000; 
+    border-radius: 5px;
+    background-color: #1a1a1a; 
+    color: #ffffff; 
+}
+
+#formLogin input[type="text"]::placeholder,
+#formLogin input[type="password"]::placeholder {
+    color: white; 
+    opacity: 0.8;
+}
+
+/* Cambios al enfocar los campos */
+#formLogin input[type="text"]:focus,
+#formLogin input[type="password"]:focus {
+    outline: none;
+    border-color: #e60000; 
+}
+
+/* Botones del formulario */
+#formLogin button {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 16px;
+    color: #ffffff; 
+    background-color: #cc0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#formLogin button:hover {
+    background-color: #990000; 
+}
+
+/* Botón 'Volver' específico */
+#formLogin button[type="button"] {
+    background-color: #4d4d4d; 
+}
+
+#formLogin button[type="button"]:hover {
+    background-color: #333333; 
+}
+
+
+#formLogin div {
+    margin-top: 20px;
+}
+
+
+#formLogin p {
+    color: #ffffff; 
+    font-size: 18px;
+    margin-bottom: 20px;
+}

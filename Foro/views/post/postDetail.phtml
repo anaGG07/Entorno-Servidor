@@ -1,0 +1,47 @@
+<div id="forum-container">
+    <div id="question-section">
+        <?php
+        require_once('./views/components/FormResponse.phtml');
+        require_once('./views/components/FormUserView.phtml');
+        
+        $post = PostRepository::getPostById($id);
+
+        //#2f2f4d;
+        //#252540;
+        $user = UserRepository::getUserById($post->getIdUser());
+
+        if (!$post || $post->getScope() !== "0") {
+            echo "<div class='error-message'>No existe ninguna pregunta para esta consulta</div>";
+        } else {
+            // Pregunta principal
+            echo "<div class='post-question'>";
+
+            
+            $user = $post->getUser();
+            echo showUserInfo($user, $post->getTimestamp(), $user_session->isAdmin());
+           
+            echo "<h2 class='question-title'>" . $post->getTitle() . "</h2>";
+            echo "<p class='question-text'>" . $post->getText() . "</p>";
+            echo "<div class='response-form'>" . showInputResponse($post) . "</div>";
+            echo "</div>";
+
+            // Respuestas
+            $answers = $post->showAnswers($user_session);
+            echo "<div id='answers-section'>";
+            if ($answers) {
+                echo "<ul class='answers-list'>";
+                echo $answers; 
+                echo "</ul>";
+            } else {
+                echo "<p class='no-answers'>Aún no hay respuestas</p>";
+            }
+            echo "</div>";
+
+            // Botón Volver
+            echo "<div class='back-button-container'>";
+            echo "<button class='back-button' onclick=\"window.location.href='index.php';\">Volver</button>";
+            echo "</div>";
+        }
+        ?>
+    </div>
+</div>

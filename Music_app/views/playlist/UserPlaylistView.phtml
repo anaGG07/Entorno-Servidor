@@ -1,0 +1,73 @@
+<?php
+
+//' ---- ESTABLECER CABECERAS ---- 
+
+$user = $user_session;
+if ($user->isAdmin() === "1") {
+  require_once('views/user/AdminHeaderIndexView.phtml');
+
+} else {
+  require_once('views/user/HeaderIndexView.phtml');
+}
+
+
+$userId = $user_session->getId();
+
+if (isset($userId)) {
+
+    // Obtener las playlists del usuario
+    $playlists = PlaylistRepository::getPlaylistsByUserId($userId);
+?>
+    <div id="divPlaylists">
+        <h2>Mis Playlists</h2>
+        <?php if (!empty($playlists)) { ?>
+            <table id="table-LandingPage">
+                
+                <tbody>
+                    <?php
+                    foreach ($playlists as $playlist) {
+                        echo "<tr>";
+                        echo "<td>";
+
+                        // Mostrar el título de la playlist
+                        echo "
+                        <form action='index.php' method='post'>
+                            <input type='hidden' name='controller' value='playlist'>
+                            <input type='hidden' name='action' value='detail'>
+                            <input type='hidden' name='id' value='" . $playlist->getId() . "'>
+                            <button type='submit' style='background:none; border:none; cursor:pointer;'>
+                                <p>" . $playlist->getTitle() . "</p>
+                            </button>
+                        </form>
+                    ";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        <?php } else { ?>
+            <p>No tienes playlists creadas aún. ¡Crea una nueva!</p>
+        <?php } ?>
+    </div>
+
+    <!-- Botón para crear una nueva playlist -->
+    <form method="post" action="index.php">
+        <input type='hidden' name='controller' value='playlist'>
+        <input type='hidden' name='action' value='add'>
+        <button type="submit">Crear Playlist</button>
+    </form>
+
+    <!-- Formulario de búsqueda de canciones -->
+    <div id="search-songs">
+        <h2>Buscar Canciones</h2>
+        <form method="post" action="index.php">
+            <input type="hidden" name="controller" value="song">
+            <input type="hidden" name="action" value="search">
+            <input type="text" name="keyword" placeholder="Busca canciones por título o autor..." required>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+<?php
+}

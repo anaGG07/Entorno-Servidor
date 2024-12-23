@@ -1,0 +1,64 @@
+
+ <form method="post" action="index.php">
+    <input type="hidden" name="controller" value="playlist">
+    <input type="hidden" name="action" value="add_song">
+
+    <!-- Input de búsqueda con datalist -->
+    <label for="song-search">Buscar Canción:</label>
+    <input list="song-options" id="song-search" name="song_id_display" placeholder="Escribe para buscar..." required>
+    <datalist id="song-options">
+        <?php 
+        if (!empty($results)) {
+            foreach ($results as $song) {
+                echo '<option value="' . htmlspecialchars($song->getTitle()) . '">';
+            }
+        } else {
+            echo '<option disabled>No se encontraron canciones</option>';
+        }
+        ?>
+    </datalist>
+
+    <!-- Campo oculto para ID real -->
+    <input type="hidden" id="song-id" name="song_id">
+
+    <script>
+        // Vincular el input con el datalist para obtener el ID real
+        const datalistInput = document.getElementById('song-search');
+        const hiddenInput = document.getElementById('song-id');
+        const options = <?php 
+            $options = [];
+            foreach ($results as $song) {
+                $options[htmlspecialchars($song->getTitle())] = $song->getId();
+            }
+            echo json_encode($options);
+        ?>;
+
+        datalistInput.addEventListener('input', function () {
+            const value = datalistInput.value;
+            hiddenInput.value = options[value] || '';
+        });
+    </script>
+
+    <!-- Selector de playlists -->
+    <?php 
+    if (!empty($playlists)) { 
+        echo '<div style="margin-top: 20px;">';
+        echo '<label for="playlist-select"><strong>Selecciona una playlist:</strong></label>';
+        echo '<select id="playlist-select" name="playlist_id" required>';
+        foreach ($playlists as $playlist) {
+            echo '<option value="' . htmlspecialchars($playlist->getId()) . '">';
+            echo htmlspecialchars($playlist->getTitle());
+            echo '</option>';
+        }
+        echo '</select>';
+        echo '</div>';
+        
+        echo '<button type="submit" style="margin-top: 20px;">Añadir Canción a la Playlist</button>';
+    } else {
+        echo '<p>No tienes playlists creadas. Crea una nueva primero.</p>';
+    }
+    ?>
+</form>
+
+<button type="button" onclick="window.location.href='index.php';">Volver</button>
+

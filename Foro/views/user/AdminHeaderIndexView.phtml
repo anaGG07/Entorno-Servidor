@@ -1,0 +1,35 @@
+<div class="divLanding">
+    <div class="titleLanding">
+        <a href="index.php">
+            <strong>AGORAFORUM</strong>
+        </a>
+    </div>
+
+    <div>
+    <?php
+    if (!isset($_SESSION['user'])) { ?>
+        <form method="post" action="index.php" class="formLanding">
+            <button type="submit" name="controller" value="login">Inicia sesión</button>
+            <button type="submit" name="controller" value="register">Regístrate</button>
+        </form>
+    <?php
+    } else {
+        if (isset($_SESSION['user'])) {
+            echo userDetail($_SESSION['user']);
+            echo "<form method='post' action='index.php' style='margin-right: 10px'>";
+            echo "  <button type='submit' name='controller' value='logout'>Cerrar sesión</button>";
+            echo "</form>";
+            
+            echo "<form method='post' action='index.php'>";
+            echo "  <input type='hidden' name='controller' value='settings'>";
+            echo "  <button>Administrar</button>";
+            echo "</form>";
+        }
+    }
+    ?>
+    </div>
+
+
+
+
+</div>

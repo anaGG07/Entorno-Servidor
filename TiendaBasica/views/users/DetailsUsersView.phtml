@@ -1,0 +1,15 @@
+<div id="userDetailContainer">
+    <h2>Detalles del Usuario</h2>
+    <br><br>
+    <p><strong>Nombre de Usuario:</strong> <?php echo $userDt->getUsername(); ?></p>
+    <br>
+    <p><strong>ID de Usuario:</strong> <?php echo $userDt->getId(); ?></p>
+    <br>
+    <p><strong>Rol:</strong> 
+        <span class="admin-status">
+            <?php echo $userDt->isAdmin() ? 'Administrador' : 'Usuario'; ?>
+        </span>
+    </p>
+    <br><br>
+    <button type="button" onclick="window.location.href='index.php';">Volver</button>
+</div>

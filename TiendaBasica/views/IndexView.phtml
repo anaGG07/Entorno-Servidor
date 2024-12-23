@@ -1,0 +1,50 @@
+<div style="max-height: 600px; text-align:center; margin-top:50px; overflow-y: auto; border: 1px solid #ddd;" >
+<?php
+// PRODUCTO MAS VENDIDO
+$mostSoldProduct = ProductRepository::getMostSoldProduct();
+
+
+if ($mostSoldProduct) {
+    echo "<div style='margin-bottom: 20px; padding: 10px; border: 1px solid #ccc;'>
+            <h2>Producto Más Vendido</h2>
+            <p><strong>Nombre:</strong> " . $mostSoldProduct['product_name'] . "</p>
+            <p><strong>Veces Vendido:</strong> " . $mostSoldProduct['total_sold'] . "</p>
+          </div>";
+} else {
+    echo "<p>No se encontraron productos vendidos.</p>";
+}
+
+
+// USUARIO QUE MAS HA GASTADO
+$topSpendingUser = UserRepository::getTopSpendingUser();
+
+if ($topSpendingUser) {
+    echo "<div style='margin-bottom: 20px; padding: 10px; border: 1px solid #ccc;'>
+            <h2>Usuario que Más Ha Gastado</h2>
+            <p><strong>Nombre:</strong> " . $topSpendingUser['user_name'] . "</p>
+            <p><strong>Total Gastado:</strong> " . number_format($topSpendingUser['total_spent'], 2) . "€</p>
+          </div>";
+} else {
+    echo "<p>No se encontraron usuarios con pedidos confirmados.</p>";
+}
+
+
+// LISTA DE TODOS LOS PRODUCTOS
+
+foreach ($products as $product) {
+    echo "
+    <form method='post' action='index.php'>
+        {$product}
+        <input type='hidden' name='controller' value='cart'>
+        <input type='hidden' name='crudCart' value='createLine'>
+        <input type='hidden' name='productId' value='". $product->getId() ."'> 
+        <button type='submit' name='command' value='add' >+</button>
+        <button type='submit' name='command' value='less' >-</button> 
+        <a>Veces que se ha comprado: " . ProductRepository::getAmountProduct($product) . "</a>
+    </form>
+    ";
+}
+?>
+</div>
+
+

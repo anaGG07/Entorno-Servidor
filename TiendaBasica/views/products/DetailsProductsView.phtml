@@ -1,0 +1,23 @@
+<div id="productDetailContainer">
+    <h2><?php echo $productDt->getName(); ?></h2>
+
+    <?php 
+    $imagePath = 'public/img/' . $productDt->getImg();
+    if (file_exists($imagePath) && $productDt->getImg()) { 
+    ?>
+        <img src="<?php echo $imagePath; ?>" alt="Imagen de <?php echo $productDt->getName(); ?>">
+    <?php 
+    } else { 
+    ?>
+        <img src="https://picsum.photos/300" alt="Imagen aleatoria">
+    <?php 
+    } 
+    ?>
+
+    <p><?php echo $productDt->getDescription(); ?></p>
+    <p class="price">Precio: $<?php echo $productDt->getPrice(); ?></p>
+    <p>Stock: <?php echo $productDt->getStock(); ?></p>
+    <p>Creado por: <?php echo $productDt->getUserName(); ?></p>
+
+    <button type="button" onclick="window.location.href='index.php';">Volver</button>
+</div>

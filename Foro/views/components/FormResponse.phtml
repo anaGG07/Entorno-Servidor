@@ -1,0 +1,19 @@
+<?php
+  function showInputResponse($post){
+    if(isset($_SESSION['user'])){
+        return '<button class="btn-response" id="btn-' . $post->getId() . '" onclick="showInput(' . $post->getId() . ')">Responder</button>
+        <form method="post" action="index.php" id="formResponse' . $post->getId() . '" class="hidden">
+            <input type="hidden" name="controller" value="post">
+            <input type="hidden" name="idPost" value="'. $post->getId() .'">
+            <input type="text" name="text" id="input-' . $post->getId() . '" placeholder="Escribe tu respuesta aqui" required/>
+            <button type="submit" id="btn-send"> > </button>
+        </form>';
+    } else {
+        return "<p id='p-errorLogin'>Debes iniciar sesión para responder</p>";
+    }
+    
+  }
+?>
+
+
+  

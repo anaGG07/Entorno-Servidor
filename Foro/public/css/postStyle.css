@@ -1,0 +1,183 @@
+
+/* Header */
+.divLanding {
+    background-color: #0056b3;
+    color: white;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px 50px;
+}
+
+.titleLanding {
+    font-size: 2.5em;
+    width: auto; 
+}
+.divLanding div{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+/* Posts Table */
+#divPosts {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+#table-LandingPage {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#table-LandingPage thead th {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+#table-LandingPage tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#table-LandingPage tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#table-LandingPage tbody td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+#table-LandingPage img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Forms and Buttons */
+form {
+    display: inline;
+}
+
+button {
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #0056b3;
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #003d80;
+    border-color: #003d80;
+}
+
+button[style*="background:none"] {
+    background: none;
+    border: none;
+    color: #0056b3;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+button[style*="background:none"]:hover {
+    text-decoration: underline;
+}
+
+/* Login/Signup Section */
+#divFormLanding {
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    width: 50%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#divFormLanding p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#divFormLanding button {
+    margin: 5px;
+}
+
+h3 {
+    color: #ffffff;
+    font-size: 1.5em;
+}
+
+
+/* Botones Inicio Sesión */
+
+/* Contenedor para organizar los botones */
+/* Contenedor para organizar los botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px; /* Ajusta según necesites */
+    margin: auto;
+    position: relative;
+}
+
+/* Estilo general de los botones */
+.btn {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Botón izquierdo con forma trapezoidal */
+.trapezoid-left {
+    background-color: #007bff;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    translate: 5%;
+}
+
+/* Botón derecho con forma trapezoidal */
+.trapezoid-right {
+    background-color: #6186ad;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+    translate: -5%;
+}
+
+/* Hover para los botones */
+.btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Línea divisoria entre los botones */
+.button-container::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}

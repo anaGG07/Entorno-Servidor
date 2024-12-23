@@ -1,0 +1,99 @@
+<style>
+    #ordersDiv {
+        max-height: 600px; 
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+    }
+
+    #orderDiv {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .orderDetails {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .orderId {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .orderInfo {
+        color: #555;
+        margin: 3px 0;
+    }
+
+    .editButton {
+        padding: 8px 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .editButton:hover {
+        background-color: #45a049;
+    }
+
+    .backButton {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        text-align: center;
+        transition: background-color 0.3s;
+    }
+
+    .backButton:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div id="ordersDiv">
+    <?php if (count($orders) < 1): ?>
+        <p>No hay pedidos realizados</p>
+    <?php else: ?>
+        <?php foreach ($orders as $order): ?>
+            <div id="orderDiv">
+                <!-- Detalles del pedido -->
+                <div class="orderDetails">
+                    <div class="orderId">Order ID: <?= $order->getId(); ?></div>
+                    <div class="orderInfo">Nombre de usuario: <?= $order->getUserName(); ?> (<?= $order->getIdUser(); ?>)</div>
+                    <div class="orderInfo">Estado: <?= $order->getState(); ?></div>
+                    <div class="orderInfo">Fecha: <?= $order->getDate(); ?></div>
+                    <div class="orderInfo">Precio total: <?= $order->getTotalPrice(); ?></div>
+                </div>
+
+                <!-- Botón de edición (solo para administradores) -->
+                <?php if ($_SESSION['user']->isAdmin()): ?>
+                    <form method="post" action="index.php" style="display:inline;">
+                        <input type="hidden" name="controller" value="crudOrders">
+                        <input type="hidden" name="crudO" value="update">
+                        <input type="hidden" name="id" value="<?= $order->getId(); ?>">
+                        <button type="submit" class="editButton" name="state" value="upd">Editar</button>
+                    </form>
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+
+<!-- Botón de volver -->
+<button onclick="window.location.href='index.php';" class="backButton">Volver</button>

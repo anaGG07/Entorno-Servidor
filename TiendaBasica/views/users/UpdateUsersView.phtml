@@ -1,0 +1,20 @@
+<form method="post" action="index.php">
+
+    <!--  USUARIO -->
+    <input type="text" name="username" placeholder="Nombre de usuario" value="<?php echo $userUpd->getUsername() ?>">
+    <select name="admin">
+        <option value="1" <?php echo $userUpd->isAdmin() ? 'selected' : ''; ?>>Sí</option>
+        <option value="0" <?php echo !$userUpd->isAdmin() ? 'selected' : ''; ?>>No</option>
+    </select>
+
+
+    <!-- VARIABLES FIJAS -->
+    <input type="hidden" name="controller" value="crudUsers">
+    <input type="hidden" name="state" value="upd">
+    <input type="hidden" name="id" value="<?php echo $userUpd->getId() ?>">
+    <button type="submit" name="crudU" value="update">Modificar</button>
+
+</form>
+<br> <br>
+<button type="button" onclick="window.location.href='index.php';">Volver</button>
+

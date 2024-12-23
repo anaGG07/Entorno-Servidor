@@ -1,0 +1,53 @@
+<?php
+  require_once('./models/internship/InternshipRepository.php');
+  require_once('./models/company/CompanyRepository.php');
+?>
+
+<h2>Tu perfil</h2>
+<img src="./public/img/avatars/<?php echo $user_session->getAvatar(); ?>" alt="Avatar" style="border-radius: 50%; width: 100px; height: 100px;">
+<p>Email: <?php echo $user_session->getEmail(); ?></p>
+<p>Biografía: <?php echo $user_session->getBio() ?: 'Sin contenido'; ?></p>
+
+<?php
+// Obtener la relación del usuario con la empresa, si existe
+$assignment = InternshipRepository::getAssignmentByStudentId($user_session->getId());
+
+if ($assignment) {
+    $company = CompanyRepository::getCompanyByTutorName($assignment['company_tutor_name']);
+    ?>
+    <h3>EMPRESA ASIGNADA</h3>
+    <p><strong>Empresa:</strong> <?php echo $company->getName(); ?></p>
+    <p><strong>Tutor Laboral:</strong> <?php echo $company->getTutorName(); ?></p>
+    <p><strong>Teléfono:</strong> <?php echo $company->getPhone(); ?></p>
+    <p><strong>Correo Electrónico:</strong> <?php echo $company->getEmail(); ?></p>
+    <p><strong>Dirección:</strong> <?php echo $company->getAddress(); ?></p>
+    <p><strong>Fecha de Inicio:</strong> <?php echo $assignment['start_date']; ?></p>
+    <p><strong>Fecha de Fin:</strong> 
+    <?php 
+    echo ($assignment['end_date'] && $assignment['end_date'] !== '0000-00-00 00:00:00') 
+        ? $assignment['end_date'] 
+        : "No definido"; 
+    ?>
+</p>
+
+    <p><strong>Estado de la Asignación:</strong> 
+        <?php echo $assignment['state'] === "1" ? 'En prácticas' : ($assignment['state'] === "-1" ? 'Finalizado' : 'Pendiente'); ?>
+    </p>
+    <?php
+} else {
+    echo "<p><strong>Asignación:</strong> No está asignado a ninguna empresa.</p>";
+}
+?>
+
+<?php
+if ($user_session->isAdmin() === "1" || $user_session->isAdmin() === "0") {
+?>
+<form method="post" action="index.php">
+    <input type='hidden' name='controller' value='user'>
+    <input type='hidden' name='action' value='edit'>
+    <input type='hidden' name='id' value='<?php echo $user_session->getId(); ?>'>
+    <button type="submit" id="btn-editProfile">Editar perfil</button>
+</form>
+<?php
+}
+?>

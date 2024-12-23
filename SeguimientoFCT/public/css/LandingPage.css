@@ -1,0 +1,144 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f5f1; 
+    color: #5a3d31; 
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #a67c52; 
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #855d3e;
+}
+
+button {
+    background-color: #a67c52; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #855d3e; 
+    transform: scale(1.05);
+}
+
+
+#table-LandingPage {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #f3e8e0; 
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(85, 65, 45, 0.2);
+}
+
+#table-LandingPage thead {
+    background-color: #a67c52; 
+    color: white;
+}
+
+#table-LandingPage th, #table-LandingPage td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #d4c4b1;
+}
+
+#table-LandingPage tbody tr {
+    background-color: #f9f5f1; 
+}
+
+#table-LandingPage tbody tr:nth-child(even) {
+    background-color: #f3e8e0; 
+}
+
+#table-LandingPage tbody tr:hover {
+    background-color: #eaddce; 
+    cursor: pointer;
+}
+
+
+.frm-table {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.frm-table input[type='hidden'] {
+    display: none;
+}
+
+.frm-table button {
+    font-size: 20px;
+    background-color: #a67c52;
+    color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.frm-table button:hover {
+    transform: scale(1.1);
+    background-color: #855d3e;
+}
+
+
+.divPosts {
+    margin: 20px auto;
+    width: 80%;
+    padding: 20px;
+    background-color: #f3e8e0; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(85, 65, 45, 0.2);
+}
+
+.divPosts table {
+    margin: 0 auto;
+}
+
+#table-LandingPage th {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+#table-LandingPage td button {
+    background: none;
+    border: none;
+    color: #a67c52; 
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+#table-LandingPage td button:hover {
+    color: #855d3e; 
+}
+
+#table-LandingPage img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+
+footer {
+    background-color: #5a3d31; 
+    color: #f3e8e0; 
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

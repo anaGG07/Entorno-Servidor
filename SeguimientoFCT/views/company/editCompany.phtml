@@ -1,0 +1,36 @@
+<div class="form-container">
+    <h2>Editar Empresa</h2>
+    <form method="post" action="index.php">
+        <input type="hidden" name="action" value="update">
+        <input type="hidden" name="id" value="<?= $company->getId(); ?>">
+
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" value="<?= $company->getName(); ?>" required>
+
+        <label for="nif">NIF:</label>
+        <input type="text" id="nif" name="nif" value="<?= $company->getNif(); ?>" required>
+
+        <label for="tutor_name">Tutor Laboral:</label>
+        <input type="text" id="tutor_name" name="tutor_name" value="<?= $company->getTutorName(); ?>" required>
+
+        <label for="phone">Teléfono:</label>
+        <input type="text" id="phone" name="phone" value="<?= $company->getPhone(); ?>" required>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" value="<?= $company->getEmail(); ?>" required>
+
+        <label for="address">Dirección:</label>
+        <input type="text" id="address" name="address" value="<?= $company->getAddress(); ?>" required>
+
+        <label for="visibility">Visibilidad:</label>
+        <select id="visibility" name="visibility" required>
+            <option value="1" <?= $company->getVisibility() == 1 ? 'selected' : ''; ?>>Visible</option>
+            <option value="0" <?= $company->getVisibility() == 0 ? 'selected' : ''; ?>>No Visible</option>
+        </select>
+
+        <div class="form-actions">
+            <button type="submit">Guardar Cambios</button>
+            <button type="button" onclick="window.location.href='index.php';">Cancelar</button>
+        </div>
+    </form>
+</div>

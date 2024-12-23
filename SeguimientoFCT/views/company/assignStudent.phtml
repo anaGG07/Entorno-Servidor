@@ -1,0 +1,25 @@
+<div class="assign-student">
+    <h2>Asignar Alumno a Tutor: <?= $company->getTutorName() ?></h2>
+    <form method="post" action="index.php">
+        <input type="hidden" name="controller" value="company">
+        <input type="hidden" name="action" value="saveAssignment">
+        <input type="hidden" name="tutor_name" value="<?= $company->getTutorName() ?>">
+
+        <label for="student">Seleccionar Alumno:</label>
+        <select id="student" name="id_student" required>
+            <?php foreach ($unassignedStudents as $student): ?>
+                <option value="<?= $student->getId() ?>">
+                    <?= $student->getUsername() ?> (<?= $student->getEmail() ?>)
+                </option>
+            <?php endforeach; ?>
+        </select>
+
+        <label for="start_date">Fecha de Inicio:</label>
+        <input type="date" id="start_date" name="start_date" required>
+
+        <label for="end_date">Fecha de Fin:</label>
+        <input type="date" id="end_date" name="end_date">
+
+        <button type="submit">Guardar Asignación</button>
+    </form>
+</div>

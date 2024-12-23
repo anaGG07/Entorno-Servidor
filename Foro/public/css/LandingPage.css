@@ -1,0 +1,148 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e2f; /* Fondo oscuro para contraste */
+    color: #f5f5f5; /* Texto claro para legibilidad */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #03a9f4; /* Azul brillante */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #03a9f4; /* Azul brillante */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0288d1; /* Azul más oscuro al pasar el cursor */
+}
+
+/* Table Styles */
+#table-LandingPage {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #2a2a3e; /* Fondo para tablas */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#table-LandingPage thead {
+    background-color: #03a9f4; /* Azul brillante */
+    color: white;
+}
+
+#table-LandingPage th, #table-LandingPage td {
+    /* padding: 15px; */
+    /* text-align: left; */
+    border-bottom: 1px solid #444;
+    
+}
+
+#table-LandingPage tbody tr {
+    background-color: #252540; /* Alternar filas */
+}
+
+#table-LandingPage tbody tr:nth-child(even) {
+    background-color: #2f2f4d;
+}
+
+#table-LandingPage tbody tr:hover {
+    background-color: #393960; /* Color de fondo al pasar el cursor */
+    cursor: pointer;
+}
+
+/* Form Styles */
+.frm-table {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.frm-table input[type='hidden'] {
+    display: none;
+}
+
+ .frm-table button {
+    font-size: 20px;
+    background-color: #03a9f4;
+    color: white;
+   transition: transform 0.3s ease, background-color 0.3s ease;
+} 
+
+.frm-table button:hover {
+    transform: scale(1.1); /* Ampliar ligeramente al pasar el cursor */
+    background-color: #0288d1;
+}
+
+/* Landing Page Specific */
+.divPosts {
+    margin: 20px auto;
+    width: 80%;
+    padding: 20px;
+    background-color: #242438; /* Fondo contenedor */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.divPosts table {
+    margin: 0 auto;
+}
+
+#table-LandingPage th {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+#table-LandingPage td button {
+    background: none;
+    border: none;
+    color: #03a9f4;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+#table-LandingPage td button:hover {
+    color: #0288d1;
+}
+
+#table-LandingPage img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+
+footer {
+    background-color: #1e1e2f;
+    color: #03a9f4;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.addPost{
+    width: 20%;    
+    
+    margin-left: 40%;
+
+}

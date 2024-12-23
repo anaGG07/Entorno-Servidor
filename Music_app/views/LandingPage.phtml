@@ -1,0 +1,27 @@
+<div id="divLanding">
+    <h1 id="titleLanding">Bienvenido a Music_app</h1>
+</div>
+
+<div id="divFormLanding">
+    <?php
+    if (!isset($_SESSION['user'])) { ?>
+        <p>¿Tienes una cuenta creada?</p>
+        <form method="post" action="index.php" id="formLanding">
+        <button type="submit" name="controller" value="login">Inicia sesión</button>
+        <button type="submit" name="controller" value="register">Regístrate</button>
+        </form>
+        <?php
+       
+    } else {
+        if (isset($_SESSION['user'])) {
+            echo "<h3>¡Hola de nuevo " . $_SESSION['user']->getUsername() . "!<br></h3>";
+        }
+        ?>
+            <form method="post" action="index.php" id="formLanding">
+            <button type="submit" name="controller" value="logout">Cerrar sesión</button>
+            <button type="submit" name="controller" value="index">Entrar</button>
+        <?php
+    }
+        ?>
+        </form>
+</div>

@@ -1,0 +1,84 @@
+<div class="company-detail">
+    <h2 class="company-detail__title">Detalles de la Empresa</h2>
+    <div class="company-detail__info">
+        <p><strong>Nombre:</strong> <?= $company->getName() ?></p>
+        <p><strong>NIF:</strong> <?= $company->getNif() ?></p>
+        <p><strong>Dirección:</strong> <?= $company->getAddress() ?></p>
+        <p><strong>Tutor Laboral:</strong> <?= $company->getTutorName() ?></p>
+        <p><strong>Teléfono:</strong> <?= $company->getPhone() ?></p>
+        <p><strong>Correo Electrónico:</strong> <?= $company->getEmail() ?></p>
+    </div>
+
+    <div class="company-detail__actions">
+        <form method="post" action="index.php">
+            <input type="hidden" name="controller" value="company">
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='index.php';">Volver</button>
+        </form>
+
+        <?php if ($user_session->isAdmin() === "1" || $user_session->isAdmin() === "0"): ?>
+            <form method="post" action="index.php">
+                <input type="hidden" name="controller" value="company">
+                <input type="hidden" name="action" value="assignStudent">
+                <input type="hidden" name="tutor_name" value="<?= $company->getTutorName() ?>">
+                <button type="submit" class="btn btn-primary">Asignar Alumno</button>
+            </form>
+
+            <form method="post" action="index.php">
+                <input type="hidden" name="controller" value="company">
+                <input type="hidden" name="action" value="edit">
+                <input type="hidden" name="id" value="<?= $company->getId() ?>">
+                <button type="submit" class="btn btn-primary">Editar Empresa</button>
+            </form>
+       
+    </div>
+
+    <h3 class="company-detail__subtitle">Alumnos Asignados</h3>
+    <table class="company-detail__table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $assignedStudents = InternshipRepository::getStudentsByTutorName($company->getTutorName());
+            foreach ($assignedStudents as $studentData):
+                $student = $studentData['user']; // Accedemos al objeto User
+                $state = $studentData['state']; // Accedemos al estado
+            ?>
+                <tr>
+                    <td>
+                        <form method="post" action="index.php">
+                            <input type="hidden" name="controller" value="user">
+                            <input type="hidden" name="action" value="showDetail">
+                            <input type="hidden" name="id" value="<?= $student->getId() ?>">
+                            <button class="btn-transparent" type="submit"><?= $student->getUsername() ?></button>
+                        </form>
+                    </td>
+                    <td><?= $student->getEmail() ?></td>
+                    <td class="company-detail__actions">
+                        <form method="post" action="index.php">
+                            <input type="hidden" name="controller" value="company">
+                            <input type="hidden" name="action" value="editAssignment">
+                            <input type="hidden" name="id_student" value="<?= $student->getId() ?>">
+                            <input type="hidden" name="tutor_name" value="<?= $company->getTutorName() ?>">
+                            <button type="submit" class="btn btn-warning">Editar</button>
+                        </form>
+
+                        <form method="post" action="index.php">
+                            <input type="hidden" name="controller" value="company">
+                            <input type="hidden" name="action" value="removeStudent">
+                            <input type="hidden" name="id_student" value="<?= $student->getId() ?>">
+                            <input type="hidden" name="tutor_name" value="<?= $company->getTutorName() ?>">
+                            <button type="submit" class="btn btn-danger">Dar de Baja</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+
+    </table>
+    <?php endif; ?>
+</div>

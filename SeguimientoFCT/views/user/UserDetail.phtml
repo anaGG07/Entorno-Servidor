@@ -1,0 +1,16 @@
+<h2> <?php echo $user->getUsername(); ?></h2>
+<img src="./public/img/avatars/<?php echo $user->getAvatar(); ?>" alt="Avatar" style="border-radius: 50%; width: 100px; height: 100px;">
+<p>Biografía: <?php echo $user->getBio() ?: 'Sin contenido'; ?></p>
+<?php
+if ($user_session->isAdmin() === "1" || $user_session->isAdmin() === "0") {
+
+?>
+    <form method="post" action="index.php">
+        <input type='hidden' name='controller' value='user'>
+        <input type='hidden' name='action' value='banear'>
+        <input type='hidden' name='id' value=' <?php echo $user->getId(); ?>'>
+        <button type='submit'>Banear</button>
+    </form>
+<?php
+}
+?>

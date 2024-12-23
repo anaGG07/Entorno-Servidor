@@ -1,0 +1,150 @@
+
+/* Contenedor principal de las playlists */
+#divPlaylists {
+    margin: 30px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    background-color: #262626; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
+    text-align: center;
+    color: #ffffff; 
+}
+
+/* Encabezado de la sección */
+#divPlaylists h2 {
+    font-size: 28px;
+    color: white; 
+    margin-bottom: 20px;
+}
+
+/* Tabla de playlists */
+#table-LandingPage {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#table-LandingPage td {
+    padding: 15px;
+    border-bottom: 1px solid #ff3333;
+    text-align: left;
+    color: #ffffff; 
+}
+
+/* Botón para abrir playlist */
+#table-LandingPage button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white; 
+    font-size: 18px;
+    text-align: left;
+    transition: color 0.3s;
+}
+
+#table-LandingPage button:hover {
+    color: white; 
+}
+
+#table-LandingPage p {
+    margin: 0;
+}
+
+/* Mensaje cuando no hay playlists */
+#divPlaylists p {
+    font-size: 16px;
+    color: #ffffff; 
+}
+
+/* Botón para crear una nueva playlist */
+form button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #cc0000; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+form button:hover {
+    background-color: #990000;
+}
+
+/* Formulario de búsqueda de canciones */
+#search-songs {
+    margin: 30px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    background-color: #1a1a1a; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
+    text-align: center;
+    color: #ffffff; /* Blanco */
+}
+
+#search-songs h2 {
+    font-size: 24px;
+    color: white; 
+    margin-bottom: 15px;
+}
+
+/* Input de búsqueda */
+#search-songs input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #cc0000; 
+    border-radius: 5px;
+    background-color: #262626; 
+    color: #ffffff; 
+    margin-bottom: 15px;
+}
+
+#search-songs input[type="text"]::placeholder {
+    color: white; 
+    opacity: 0.8;
+}
+
+/* Botón de búsqueda */
+#search-songs button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff; 
+    background-color: #cc0000; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search-songs button:hover {
+    background-color: #990000; 
+}
+
+
+#divPlaylists + form {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#divPlaylists + form button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff; 
+    background-color: #cc0000; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block; 
+}
+
+#divPlaylists + form button:hover {
+    background-color: #990000; 
+}

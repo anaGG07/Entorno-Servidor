@@ -1,0 +1,65 @@
+<h1>Usuarios Almacenados</h1>
+
+<br><br>
+
+<div style="max-height: 600px; overflow-y: auto; border: 1px solid #ddd;">
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Es Admin</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <?php
+      for ($i = 0; $i < count($users); $i++) {
+        $user = $users[$i];
+      ?>
+        <tr>
+          <td>
+            <form method="post" action="index.php">
+              <input type="hidden" name="controller" value="crudUsers">
+              <input type="hidden" name="id" value="<?php echo $user->getId() ?>">
+              <button type="submit" name="crudU" value="orders">Pedidos</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="index.php">
+              <input type="hidden" name="controller" value="crudUsers">
+              <input type="hidden" name="id" value="<?php echo $user->getId() ?>">
+              <button type="submit" name="crudU" value="update">Modificar</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="index.php">
+              <input type="hidden" name="controller" value="crudUsers">
+              <input type="hidden" name="id" value="<?php echo $user->getId() ?>">
+              <button type="submit" name="crudU" value="delete">Borrar</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="index.php">
+              <input type="hidden" name="controller" value="crudUsers">
+              <input type="hidden" name="id" value="<?php echo $user->getId() ?>">
+              <button type="submit" name="crudU" value="read">Inspeccionar</button>
+            </form>
+          </td>
+          <td><?php echo $user->getId(); ?></td>
+          <td><?php echo $user->getUsername(); ?></td>
+          <td><?php echo $user->isAdmin() ? 'Sí' : 'No'; ?></td>
+        </tr>
+      <?php
+      }
+      ?>
+    </tbody>
+  </table>
+</div>
+
+<br><br>
+<button type="button" onclick="window.location.href='index.php';">Volver</button>

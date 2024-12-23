@@ -1,0 +1,18 @@
+<div id="productFormContainer">
+    <form method="post" action="index.php" enctype="multipart/form-data">
+        <!--  PRODUCTO -->
+        <input type="text" name="name" placeholder="Nombre de producto">
+        <input type="file" name="image" id="image" accept="image/*">
+        <input type="text" name="description" placeholder="Descripción del producto">
+        <input type="number" name="price" step="0.01" min="0" placeholder="Precio" />
+        <input type="number" name="stock" step="1" min="0" placeholder="Cantidad" />
+
+        <!-- VARIABLES FIJAS -->
+        <input type="hidden" name="controller" value="crudProducts">
+        <input type="hidden" name="state" value="add">
+        <button type="submit" name="crudP" value="create">Crear</button>
+    </form>
+
+    <br> <br>
+    <button type="button" onclick="window.location.href='index.php';">Volver</button>
+</div>

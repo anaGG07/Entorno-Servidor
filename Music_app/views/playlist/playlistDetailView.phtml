@@ -1,0 +1,47 @@
+<?php
+//' ---- ESTABLECER CABECERAS ---- 
+
+$user = $user_session;
+if ($user->isAdmin() === "1") {
+  require_once('views/user/AdminHeaderIndexView.phtml');
+
+} else {
+  require_once('views/user/HeaderIndexView.phtml');
+}
+
+
+$playlist = PlaylistRepository::getPlaylistById($_POST['id']);
+echo "<br><strong>Playlist:</strong> " . $playlist->getTitle();
+
+// Obtener las canciones asociadas a la playlist
+$songs = SongRepository::getSongsByPlaylist($_POST['id']);
+
+// Inicializar contadores
+$totalDuration = 0;
+$totalSongs = count($songs);
+
+// Mostrar el número de canciones
+echo "<p><strong>Número de canciones:</strong> " . $totalSongs . "</p>";
+
+if (!empty($songs)) {
+    echo "<ul>";
+    foreach ($songs as $song) {
+        echo "<li>";
+        echo "<strong>" . $song->getTitle() . "</strong> - " . $song->getAuthor();
+        echo " (" . gmdate("i:s", $song->getDuration()) . ")"; // Convertir duración a minutos:segundos
+        echo "</li>";
+        // Sumar duración total
+        $totalDuration += $song->getDuration();
+    }
+    echo "</ul>";
+} else {
+    echo "<p>Esta playlist no contiene canciones.</p>";
+}
+
+// Mostrar la duración total en minutos:segundos
+echo "<p><strong>Duración total:</strong> " . gmdate("i:s", $totalDuration) . "</p>";
+?>
+
+<br>
+<input type='hidden' name='controller' value='detail'>
+<button type='button' onclick="window.location.href='index.php';">Volver</button>

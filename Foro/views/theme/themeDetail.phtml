@@ -1,0 +1,31 @@
+<?php
+
+$theme = ThemeRepository::getThemeById($id);
+
+if (!$theme) {
+    echo "No existe ningún tema para esta consulta";
+} else {
+    echo "<h1>" . $theme->getTitle() . "</h1>";
+    $posts = PostRepository::getQuestionsByTheme($theme->getId());
+
+    if ($posts) {
+        foreach ($posts as $post) {
+            echo "
+                <div>
+                    <form action='index.php' method='post' class='frm-table'>
+                        <input type='hidden' name='controller' value='detail'>
+                        <input type='hidden' name='type' value='post'>
+                        <input type='hidden' name='id' value='" . $post->getId() . "'>
+                        <button type='submit' style='background:none; border:none; cursor:pointer;' >
+                            " . $post->getTitle() . "
+                        </button>
+                    </form>
+                </div>
+            ";
+        }
+        echo "<br>";
+        echo "<button type='button' onclick=\"window.location.href='index.php';\">Volver</button>";
+    } else {
+        echo "Aún no hay respuestas";
+    }
+}

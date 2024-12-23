@@ -1,0 +1,17 @@
+<form method="post" action="index.php">
+    
+    <h3>Datos de la tarjeta:</h3>
+    <label for="num_tarjeta">Número de Tarjeta:</label>
+    <input type="text" id="num_tarjeta" name="num_tarjeta" required placeholder="XXXX-XXXX-XXXX-XXXX">
+
+    <label for="fecha_exp">Caducidad:</label>
+    <input type="text" id="fecha_exp" name="fecha_exp" required placeholder="MM/AA">
+
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" name="cvv" required placeholder="XXX">
+
+
+    <input type="hidden" name="controller" value="pay">
+    <input type="hidden" name="payOrder" value="card">
+    <button type="submit" name="confirmar_pago_tarjeta">Confirmar Pago</button>
+</form>

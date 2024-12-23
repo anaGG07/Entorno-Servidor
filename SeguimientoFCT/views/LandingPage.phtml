@@ -1,0 +1,170 @@
+<?php
+require_once('./models/company/CompanyRepository.php');
+require_once('./models/internship/InternshipRepository.php');
+require_once('./models/user/UserRepository.php');
+
+
+?>
+
+
+<div class="divPosts">
+    <div id="tableViews">
+        <form method="post" action="index.php">
+            <input type="hidden" name="view" value="companies">
+            <button type="submit">Empresas</button>
+        </form>
+        <form method="post" action="index.php">
+            <input type="hidden" name="view" value="teachers">
+            <button type="submit">Profesores</button>
+        </form>
+        <form method="post" action="index.php">
+            <input type="hidden" name="view" value="students">
+            <button type="submit">Alumnos</button>
+        </form>
+
+        <div class="search-bar">
+            <form method="post" action="index.php">
+                <input type="hidden" name="action" value="search">
+                <input type="hidden" name="controller" value="search">
+                <input type="text" name="query" placeholder="Buscar..." required>
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+
+    </div>
+
+    <?php
+    // Determinar qué vista mostrar
+    $view = isset($_POST['view']) ? $_POST['view'] : 'companies';
+
+    if ($view === 'companies') {
+    ?>
+        <table id="table-LandingPage">
+            <thead>
+                <tr>
+                    <th>Empresa</th>
+                    <th>Alumnos en prácticas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $allCompanies = CompanyRepository::getAllVisibleCompanies();
+
+                foreach ($allCompanies as $company) {
+                    $studentsCount = InternshipRepository::getStudentsCountByCompanyTutorName($company->getTutorName());
+                    echo "
+                        <tr>
+                            <td>
+                                <form action='index.php' method='post' class='frm-table'>
+                                    <input type='hidden' name='controller' value='company'>
+                                    <input type='hidden' name='action' value='showDetail'>
+                                    <input type='hidden' name='id' value='" . $company->getId() . "'>
+                                    <button type='submit'>" . $company->getName() . "</button>
+                                </form>
+                            </td>
+                            <td>" . $studentsCount . "</td>
+                        </tr>
+                    ";
+                }
+                ?>
+            </tbody>
+        </table>
+        <?php
+        if ($user_session->isAdmin() === "1" || $user_session->isAdmin() === "0") {
+        ?>
+            <form method="post" action="index.php">
+                <input type="hidden" name="controller" value="company">
+                <input type="hidden" name="action" value="addCompany">
+                <button>+</button>
+            </form>
+        <?php
+        }
+    } elseif ($view === 'teachers') {
+        ?>
+        <table id="table-LandingPage">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $allTeachers = UserRepository::getAllTeachers();
+
+                foreach ($allTeachers as $teacher) {
+                    echo "
+                        <tr>
+                            <td>
+                                <form action='index.php' method='post' class='frm-table'>
+                                    <input type='hidden' name='controller' value='user'>
+                                    <input type='hidden' name='id' value='" . $teacher->getId() . "'>
+                                    <button type='submit'>" . $teacher->getUsername() . "</button>
+                                </form>
+                            </td>
+                            <td>" . $teacher->getEmail() . "</td>
+                        </tr>
+                    ";
+                }
+                ?>
+            </tbody>
+        </table>
+        <?php
+        if ($user_session->isAdmin() === "1" || $user_session->isAdmin() === "0") {
+        ?>
+            <form method="post" action="index.php">
+                <input type="hidden" name="controller" value="user">
+                <input type="hidden" name="action" value="createTeacher">
+                <button>+</button>
+            </form>
+        <?php
+        }
+    } elseif ($view === 'students') {
+        ?>
+        <table id="table-LandingPage">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $allStudents = UserRepository::getAllStudents();
+
+                foreach ($allStudents as $student) {
+                    $user = $student['user'];
+                    $state = $student['state'];
+                    echo "
+                <tr>
+                    <td>
+                        <form action='index.php' method='post' class='frm-table'>
+                            <input type='hidden' name='controller' value='user'>
+                            <input type='hidden' name='id' value='" . $user->getId() . "'>
+                            <button type='submit'>" . $user->getUsername() . "</button>
+                        </form>
+                    </td>
+                    <td>" . $user->getEmail() . "</td>
+                    <td>" . $state . "</td>
+                </tr>
+            ";
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <?php
+        if ($user_session->isAdmin() === "1" || $user_session->isAdmin() === "0") {
+        ?>
+            <form method="post" action="index.php">
+                <input type="hidden" name="controller" value="user">
+                <input type="hidden" name="action" value="createStudent">
+                <button>+</button>
+            </form>
+    <?php
+        }
+    }
+
+    ?>
+</div>

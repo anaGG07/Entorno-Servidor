@@ -1,0 +1,82 @@
+#create-playlist-form {
+    margin: 50px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    background-color: #262626;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+#create-playlist-form h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+#create-playlist-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#create-playlist-form label {
+    font-size: 16px;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#create-playlist-form input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #cc0000;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+#create-playlist-form input::placeholder {
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+#create-playlist-form input:focus {
+    outline: none;
+    border-color: #e60000;
+}
+
+#create-playlist-form button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #cc0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+#create-playlist-form button:hover {
+    background-color: #990000;
+}
+
+button[type="button"] {
+    margin-top: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #4d4d4d;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="button"]:hover {
+    background-color: #333333;
+}

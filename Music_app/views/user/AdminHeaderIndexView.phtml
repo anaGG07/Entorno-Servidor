@@ -1,0 +1,34 @@
+<?php
+  require_once('views\components\FormUserView.phtml');
+?>
+<div id="divLanding">
+    <a href="index.php">
+        <h1 id="titleLanding">Music_app</h1>
+    </a>
+
+    <form method="post" action="index.php" id="formLanding">
+        <?php
+        if (!isset($_SESSION['user'])) { ?>
+            <button type="submit" name="controller" value="login">Inicia sesión</button>
+            <button type="submit" name="controller" value="register">Regístrate</button>
+        <?php
+        } else {
+            if (isset($_SESSION['user'])) {
+                echo userDetail($_SESSION['user']);
+                echo "<form method='post' action='index.php'>";
+                echo "<button type='submit' name='controller' value='logout'>Cerrar sesión</button>";
+                echo "</form>";
+                
+                echo "<form method='post' action='index.php'>";
+                echo "<input type='hidden' name='controller' value='settings'>";
+                echo "<button>Administrar</button>";
+                echo "</form>";
+
+            }
+        }
+        ?>
+    </form>
+
+    
+
+</div>

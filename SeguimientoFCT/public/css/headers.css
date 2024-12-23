@@ -1,0 +1,138 @@
+/* General Styling for Header */
+#headerUserLanding {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f3e8e0;
+    padding: 20px 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(85, 65, 45, 0.2);
+}
+
+/* User Avatar Section */
+#userAvatarSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+#userAvatarSection img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #d4c4b1;
+}
+
+/* Title Section */
+#titleSection {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #5a3d31;
+    margin: 0;
+}
+
+#titleSection a {
+    text-decoration: none;
+    color: #5a3d31;
+    transition: color 0.3s ease;
+}
+
+#titleSection a:hover {
+    color: #855d3e;
+}
+
+/* Button Section */
+#buttonSection,
+#formSession {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#buttonSection button,
+#formSession button {
+    background-color: #d4c4b1;
+    color: #5a3d31;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#buttonSection button:hover,
+#formSession button:hover {
+    background-color: #b39b7c;
+}
+
+
+/* General Header Styling */
+.divLanding {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f3e8e0; 
+    padding: 20px 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(85, 65, 45, 0.2);
+}
+
+/* User Avatar on the Left */
+.divLanding .user-avatar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.divLanding .user-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #d4c4b1; 
+}
+
+/* Title in the Center */
+.divLanding .titleLanding {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #5a3d31; 
+    margin: 0;
+}
+
+.divLanding .titleLanding a {
+    text-decoration: none;
+    color: #5a3d31;
+    transition: color 0.3s ease;
+}
+
+.divLanding .titleLanding a:hover {
+    color: #855d3e; 
+}
+
+/* Buttons on the Right */
+.divLanding .header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.divLanding .header-buttons button {
+    background-color: #d4c4b1; 
+    color: #5a3d31; 
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.divLanding .header-buttons button:hover {
+    background-color: #b39b7c; 
+}
+

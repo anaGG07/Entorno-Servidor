@@ -1,0 +1,67 @@
+/* Contenedor principal del encabezado */
+#divLanding {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #cc0000;
+    border-bottom: 2px solid #990000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Título de la aplicación */
+#titleLanding {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: auto;
+}
+
+#titleLanding:hover {
+    color: #ffcccc;
+}
+
+/* Acciones del encabezado */
+#header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Botones del encabezado */
+#header-actions button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #990000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#header-actions button:hover {
+    background-color: #660000;
+}
+
+#header-actions button[name="controller"][value="settings"] {
+    background-color: #e60000;
+}
+
+#header-actions button[name="controller"][value="settings"]:hover {
+    background-color: #b30000;
+}
+
+/* Estilo del avatar */
+#header-actions img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#header-actions img:hover {
+    transform: scale(1.1);
+}

@@ -1,0 +1,50 @@
+<?php
+  require_once('views\components\FormUserView.phtml');
+
+?>
+
+
+<div id="divLanding">
+
+    <a href="index.php">
+        <h1 id="titleLanding">Music_app</h1>
+    </a>
+
+
+    <?php
+    echo userDetail($_SESSION['user']);
+    ?>
+
+    <form method='post' action='index.php'>
+        <button type='submit' name='controller' value='logout'>Cerrar sesión</button>
+    </form>
+
+</div>
+<div>
+
+    <h2>Panel de administrador</h2>
+    <p>Administra las playlist y los usuarios desde aquí</p>
+    <form method='post' action='index.php'>
+        <!-- Panel de administrador -->
+
+        <p>
+            <input type='hidden' name='controller' value='crud'>
+            <input type='hidden' name='value' value='playlist'>
+            <button type='submit' style='background:none; border:none; cursor:pointer;'>
+                Configuración de playlist
+            </button>
+        </p>
+
+    </form>
+    <form method='post' action='index.php'>
+        <p>
+            <input type='hidden' name='controller' value='crud'>
+            <input type='hidden' name='value' value='users'>
+            <button type='submit' style='background:none; border:none; cursor:pointer;'>
+                Gestionar usuarios
+            </button>
+        </p>
+
+    </form>
+
+</div>

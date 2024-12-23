@@ -1,0 +1,29 @@
+<?php
+  
+//' ---- ESTABLECER CABECERAS ---- 
+
+$user = $user_session;
+if ($user->isAdmin() === "1") {
+  require_once('views/user/AdminHeaderIndexView.phtml');
+
+} else {
+  require_once('views/user/HeaderIndexView.phtml');
+}
+?>
+
+
+<div id="create-playlist-form">
+    <h2>Crear Nueva Playlist</h2>
+    <form method="post" action="index.php" enctype="multipart/form-data">
+        <input type="hidden" name="controller" value="playlist">
+        <input type="hidden" name="action" value="create">
+
+        <div class="form-group">
+            <label for="playlist-title">Título de la Playlist</label>
+            <input type="text" id="playlist-title" name="title" placeholder="Escribe el título de la playlist" required>
+        </div>
+
+        <button type="submit">Crear Playlist</button>
+    </form>
+</div>
+<button type="button" onclick="window.location.href='index.php';">Volver</button>
