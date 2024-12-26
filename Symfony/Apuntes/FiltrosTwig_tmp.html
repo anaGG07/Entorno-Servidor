@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FiltrosTwig.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///r%3A/2.Travail/1.Enseignement/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css"><link rel="stylesheet" href="file:///d%3A/rdaros/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css">
+</head>
+
+<body>
+    <h2 id="%C3%ADndice">Índice</h2>
+<ul>
+<li><a href="#transformaci%C3%B3n-de-cadenas">Transformación de cadenas</a></li>
+<li><a href="#formato-de-n%C3%BAmeros">Formato de números</a></li>
+<li><a href="#fechas">Fechas</a></li>
+<li><a href="#manipulaci%C3%B3n-de-cadenas">Manipulación de cadenas</a></li>
+<li><a href="#manipulaci%C3%B3n-de-listas">Manipulación de listas</a></li>
+<li><a href="#json-y-datos">JSON y datos</a></li>
+<li><a href="#condicionales-y-predeterminados">Condicionales y predeterminados</a></li>
+<li><a href="#operaciones-matem%C3%A1ticas">Operaciones matemáticas</a></li>
+<li><a href="#otros-filtros">Otros filtros</a></li>
+<li><a href="#funciones-avanzadas">Funciones avanzadas</a></li>
+</ul>
+<hr>
+<h1 id="filtros-twig-%F0%9F%8E%A8">Filtros Twig 🎨</h1>
+<ul>
+<li>
+<p><strong>Transformación de cadenas</strong> ✍️</p>
+<ul>
+<li><code>upper</code>: Convierte una cadena a mayúsculas.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 'hola mundo'|<span class="hljs-keyword">upper</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: HOLA MUNDO #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>lower</code>: Convierte una cadena a minúsculas.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 'HOLA MUNDO'|<span class="hljs-keyword">lower</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: hola mundo #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>capitalize</code>: Convierte el primer carácter de la cadena a mayúscula.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 'hola mundo'|<span class="hljs-keyword">capitalize</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: Hola mundo #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>title</code>: Convierte cada palabra de una cadena a título.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 'hola mundo'|<span class="hljs-keyword">title</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: Hola Mundo #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Formato de números</strong> 🔢</p>
+<ul>
+<li><code>number_format</code>: Formatea números con decimales y separadores personalizados.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 1234.5678|<span class="hljs-keyword">number_format</span>(2, '.', ',') }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: 1,234.57 #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Fechas</strong> 📅</p>
+<ul>
+<li><code>date</code>: Convierte una fecha a un formato específico.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ '2024-01-01'|<span class="hljs-keyword">date</span>('d/m/Y') }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: 01/01/2024 #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>date_modify</code>: Modifica una fecha con un intervalo.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 'now'|<span class="hljs-keyword">date_modify</span>('+1 day')|<span class="hljs-keyword">date</span>('Y-m-d') }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: fecha de mañana #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Manipulación de cadenas</strong> ✂️</p>
+<ul>
+<li><code>replace</code>: Reemplaza partes de una cadena.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 'Hola Mundo'|<span class="hljs-keyword">replace</span>({'Mundo': 'Twig'}) }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: Hola Twig #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>truncate</code>: Corta una cadena si excede un límite.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 'Este es un texto muy largo'|truncate(10) }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: Este es... #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>striptags</code>: Elimina etiquetas HTML de una cadena.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ '&lt;b&gt;Hola&lt;/b&gt; Mundo'|<span class="hljs-keyword">striptags</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: Hola Mundo #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>trim</code>: Elimina espacios en blanco de los extremos de una cadena.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ '  hola  '|<span class="hljs-keyword">trim</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: hola #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>split</code>: Divide una cadena en partes.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 'hola mundo'|<span class="hljs-keyword">split</span>(' ') }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: ['hola', 'mundo'] #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Manipulación de listas</strong> 📋</p>
+<ul>
+<li><code>length</code>: Devuelve la longitud de una lista o cadena.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 'hola'|<span class="hljs-keyword">length</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: 4 #}</span><span class="xml">
+</span><span class="hljs-template-variable">{{ [1, 2, 3]|<span class="hljs-keyword">length</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: 3 #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>first</code>: Devuelve el primer elemento de una lista.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ [1, 2, 3]|<span class="hljs-keyword">first</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: 1 #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>last</code>: Devuelve el último elemento de una lista.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ [1, 2, 3]|<span class="hljs-keyword">last</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: 3 #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>reverse</code>: Invierte el orden de una lista o cadena.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 'Hola'|<span class="hljs-keyword">reverse</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: aloH #}</span><span class="xml">
+</span><span class="hljs-template-variable">{{ [1, 2, 3]|<span class="hljs-keyword">reverse</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: [3, 2, 1] #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>merge</code>: Combina dos listas en una sola.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ [1, 2]|<span class="hljs-keyword">merge</span>([3, 4]) }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: [1, 2, 3, 4] #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>batch</code>: Divide una lista en grupos más pequeños.<pre class="hljs"><code><div><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">for</span></span> group in items|<span class="hljs-keyword">batch</span>(3) %}</span><span class="xml">
+    </span><span class="hljs-template-variable">{{ group }}</span><span class="xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endfor</span></span> %}</span><span class="xml">
+</span></div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>JSON y datos</strong> 🗂️</p>
+<ul>
+<li><code>json_encode</code>: Convierte una variable a formato JSON.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ {name: 'John', age: 30}|<span class="hljs-keyword">json_encode</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: {"name":"John","age":30} #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>keys</code>: Obtiene las claves de un array asociativo.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ {a: 1, b: 2}|<span class="hljs-keyword">keys</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: ['a', 'b'] #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Condicionales y predeterminados</strong> ⚙️</p>
+<ul>
+<li><code>default</code>: Devuelve un valor por defecto si la variable no está definida o es <code>null</code>.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ nombre|<span class="hljs-keyword">default</span>('Sin nombre') }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: Sin nombre si nombre no está definido #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Operaciones matemáticas</strong> ➕➖</p>
+<ul>
+<li><code>abs</code>: Devuelve el valor absoluto.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ -5|<span class="hljs-keyword">abs</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: 5 #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>round</code>: Redondea un número según las opciones dadas.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ 5.678|<span class="hljs-keyword">round</span> }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: 6 #}</span><span class="xml">
+</span><span class="hljs-template-variable">{{ 5.678|<span class="hljs-keyword">round</span>(2, 'floor') }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: 5.67 #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Otros filtros</strong> 🔧</p>
+<ul>
+<li><code>e</code> (alias de <code>escape</code>): Escapa caracteres especiales para prevenir inyección de código.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ '&lt;b&gt;Hola&lt;/b&gt;'|e }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: &amp;lt;b&amp;gt;Hola&amp;lt;/b&amp;gt; #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>nl2br</code>: Convierte saltos de línea en etiquetas <code>&lt;br&gt;</code>.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ "Hola\nMundo"|nl2br }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: Hola&lt;br&gt;Mundo #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Funciones avanzadas</strong> 🧠</p>
+<ul>
+<li><code>filter</code>: Filtra elementos de una lista según una condición.<pre class="hljs"><code><div><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">for</span></span> number in numbers|<span class="hljs-keyword">filter</span>(x =&gt; x &gt; 10) %}</span><span class="xml">
+    </span><span class="hljs-template-variable">{{ number }}</span><span class="xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endfor</span></span> %}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>map</code>: Aplica una transformación a cada elemento de una lista.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ [1, 2, 3]|<span class="hljs-keyword">map</span>(x =&gt; x * 2) }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: [2, 4, 6] #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+<li><code>reduce</code>: Reduce una lista a un solo valor aplicando una operación.<pre class="hljs"><code><div><span class="hljs-template-variable">{{ [1, 2, 3]|<span class="hljs-keyword">reduce</span>((carry, x) =&gt; carry + x) }}</span><span class="xml"> </span><span class="hljs-comment">{# Resultado: 6 #}</span><span class="xml">
+</span></div></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+
+</body>
+
+</html>
