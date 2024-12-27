@@ -1,0 +1,53 @@
+PASOS PARA CREAR UN PROYECTO NUEVO SYMFONY
+------------------------------------------
+
+1º -> Crear carpeta de proyecto: 
+	`--> symfony new companyContact --webapp
+
+2º -> Levantar el servidor: 
+	`--> symfony serve -d (Dentro de la carpeta creada)
+
+3º -> Crear la base de datos:
+	`--> Configurar el archivo .env
+	`--> Iniciar Xampp
+	`--> php bin/console doctrine:database:create
+
+4º -> Crear primer controlador: 
+	`--> php bin/console make:controller HomeController (redireccionador)
+
+5º -> Generar la entidad User:
+	`--> php bin/console make:user
+
+6º -> Generar el sistema de seguridad login/logout: 
+	`--> php bin/console make:auth
+
+7º -> Generar el sistema de registro:
+    `--> php bin/console make:registration-form
+
+8º -> Generar el archivo de migraciones:
+    `--> php bin/console make:migration
+
+9º -> Aplicar las migraciones:
+    `--> php bin/console doctrine:migrations:migrate
+
+10º -> Crear las entidades necesarias:
+	`--> php bin/console make:entity NombreEntidad
+
+11º -> Establecer relaciones entre entidades:
+	`--> php bin/console make:entity NombreEntidad
+
+ANOTACIONES IMPORTANTES
+-----------------------
+
+Parar el servidor:
+	`--> symfony server:stop --all
+
+Crear Relaciones:
+	`--> php bin/console make:entity
+	`--> nombre de la entidad a editar
+	`--> nombre de la propiedad "relacion"
+	`--> relation
+	`--> nombre de la entidad con la que se relaciona
+	`--> seguir instrucciones de la terminal
+
+
