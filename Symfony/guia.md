@@ -3,9 +3,11 @@ PASOS PARA CREAR UN PROYECTO NUEVO SYMFONY
 
 1º -> Crear carpeta de proyecto: 
 	`--> symfony new companyContact --webapp
+	`--> symfony new plantilla --webapp
 
 2º -> Levantar el servidor: 
 	`--> symfony serve -d (Dentro de la carpeta creada)
+	`--> symfony server:start -d 
 
 3º -> Crear la base de datos:
 	`--> Configurar el archivo .env
@@ -13,7 +15,7 @@ PASOS PARA CREAR UN PROYECTO NUEVO SYMFONY
 	`--> php bin/console doctrine:database:create
 
 4º -> Crear primer controlador: 
-	`--> php bin/console make:controller HomeController (redireccionador)
+	`--> php bin/console make:controller MainController (redireccionador)
 
 5º -> Generar la entidad User:
 	`--> php bin/console make:user
@@ -36,8 +38,21 @@ PASOS PARA CREAR UN PROYECTO NUEVO SYMFONY
 11º -> Establecer relaciones entre entidades:
 	`--> php bin/console make:entity NombreEntidad
 
+12º -> Generar CRUD:
+	`--> php bin/console make:crud
+
+
 ANOTACIONES IMPORTANTES
 -----------------------
+
+"Invalid CSRF token"
+	`--> composer require paragonie/sodium_compat
+ 	`--> php bin/console secrets:generate-keys
+	`--> composer install
+	`--> completar en `.env` la variable `APP_SECRET=`, con el valor generado en 
+		 el archivo `plantillaB\config\secrets\dev\dev.decrypt.private.php` en la variable: `SYMFONY_DECRYPTION_SECRET`.
+	`--> php bin/console cache:clear    
+
 
 Parar el servidor:
 	`--> symfony server:stop --all
@@ -51,3 +66,5 @@ Crear Relaciones:
 	`--> seguir instrucciones de la terminal
 
 
+Crear un User Admin:
+	`--> php bin/console doctrine:query:sql "INSERT INTO user (username, roles, password) VALUES ('admin', '["ROLE_ADMIN"]', 'admin')"
